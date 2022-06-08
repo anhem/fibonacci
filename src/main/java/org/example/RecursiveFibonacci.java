@@ -1,8 +1,12 @@
 package org.example;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.ZERO;
 
 public class RecursiveFibonacci implements Fibonacci {
     @Override
@@ -14,16 +18,16 @@ public class RecursiveFibonacci implements Fibonacci {
     }
 
     @Override
-    public List<Integer> getFibonacci(int size) {
-        return getFibonacciList(new ArrayList<>(List.of(0, 1)), size);
+    public List<BigInteger> getFibonacci(int size) {
+        return getFibonacciList(new ArrayList<>(List.of(ZERO, ONE)), size);
     }
 
-    private List<Integer> getFibonacciList(List<Integer> result, int size) {
+    private List<BigInteger> getFibonacciList(List<BigInteger> result, int size) {
         int currentSize = result.size();
         if (currentSize == size) {
             return result;
         }
-        result.add(result.get(currentSize - 2) + result.get(currentSize - 1));
+        result.add(result.get(currentSize - 2).add(result.get(currentSize - 1)));
         return getFibonacciList(result, size);
     }
 }

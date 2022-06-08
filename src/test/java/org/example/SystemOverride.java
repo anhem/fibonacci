@@ -14,7 +14,7 @@ public abstract class SystemOverride {
     protected final ByteArrayOutputStream errorStream = new ByteArrayOutputStream();
     private final PrintStream defaultOutStream = System.out;
     private final PrintStream defaultErrorStream = System.err;
-    private final InputStream defaultIn = System.in;
+    private final InputStream defaultInStream = System.in;
 
     @BeforeEach
     public void setUpStreams() {
@@ -26,7 +26,7 @@ public abstract class SystemOverride {
     public void restoreStreams() {
         System.setOut(defaultOutStream);
         System.setErr(defaultErrorStream);
-        System.setIn(defaultIn);
+        System.setIn(defaultInStream);
     }
 
     protected void sendInput(String input) {
